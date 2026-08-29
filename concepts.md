@@ -15,7 +15,7 @@ Python is case-sensitive.
 | `complex`  | —          | —       | —               | `2+3j`      |
 | `bool`     | —          | —       | —               | `True`      |
 | `str`      | Yes        | No      | Yes             | `"Hello"`   |
-| `list`     | Yes        | Yes     | Yes             | `[1, 2, 3]` |
+| `_list.py`     | Yes        | Yes     | Yes             | `[1, 2, 3]` |
 | `tuple`    | Yes        | No      | Yes             | `(1, 2, 3)` |
 | `set`      | No         | Yes     | No              | `{1, 2, 3}` |
 | `dict`     | Yes (3.7+) | Yes     | No (using keys) | `{"a": 1}`  |
@@ -76,3 +76,36 @@ as x. so statement `x is y` will stand true.
     str.islower()
     str.isupper()
 
+
+ASCII Codes:
+ - 0 - 9: 48 - 7
+ - A - Z: 65 - 90 
+ - a - b: 96 - 122
+
+List:
+ - Ordered collection of heterogeneous elements, mutable
+ - list are heterogeneous (can have element of different data types)
+ - list slicing: [start, stop, step], [::-1] (reverse order)
+ - list.append(element): adds an element at the end of an list
+ - list.extend(iterable): adds any iterable/group at the end of an list
+ - list.index(element, index)
+ - list.remove(element)
+ - list.pop(index): index is optional, by default deletes last element
+ - list.clear(): removes all elements from an list
+ - list.reverse()
+ - list.sort(*, key=None, reverse=False): key = len, key = str.lower
+ - list.count(element)
+ - list comprehension: l1 = [ x**2 for x in range(1, 5) if x % 2 == 0]
+
+Tuple:
+ - Ordered collection of heterogeneous elements, immutable
+ - once created, cannot be modified/added
+ - tuple packing: T1 = 1, 2, 3, 4, 5 --> (1, 2, 3, 4, 5)
+ - tuple unpacking: a, b, *c = T1 --> a = 1, b = 2, c = [3, 4, 5]
+
+Set:
+ - Unordered collection of heterogeneous elements, mutable
+ - no indexing & slicing
+
+Dictionary:
+ - Ordered collection of heterogeneous elements, mutable
