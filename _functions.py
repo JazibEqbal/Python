@@ -19,3 +19,27 @@ default_argument()
 default_argument()
 default_argument(l=[10, 11])
 default_argument()
+
+
+def positional_only_argument(a, b, /, c, d):
+    print(a, b, c, d)
+
+positional_only_argument(3, 4, 5, d=6) # allowed i.e., every argument before / must be positional only. '/'  cannot be the 1st argument as by default all args are keyword-positional only. Hence, it does not make sense.
+
+
+def keyword_only_argument(a, b, *, c, d):
+    print(a, b, c, d)
+
+keyword_only_argument(3, 4, c=5, d=6) # allowed i.e., every argument after * must be keyword only. '*'  cannot be the last argument as by default all args are keyword-positional only. Hence, it does not make sense.
+
+
+def variable_length_positional_argument(a, b, *args):
+    print(a, b, args)
+
+variable_length_positional_argument(1, 2, 3, 4, 5) # before *args all arguments must be positional only, and after it must be keyword only.
+
+
+def variable_length_keyword_argument(a, b, **kwargs):
+    print(a, b, kwargs)
+
+variable_length_keyword_argument(1, 2, c=3, d=4, e=5) # arguments cannot follow var-keyword argument
