@@ -24,3 +24,13 @@ print(next(day))
 print(next(day))
 print(next(day))
 print(next(day))
+
+
+def fibonacci_using_generator(n):
+    a, b = 0, 1
+    for i in range(n + 1):
+        yield a
+        a, b = b, a + b
+
+for term in fibonacci_using_generator(10):
+    print(term)

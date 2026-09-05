@@ -43,3 +43,39 @@ def variable_length_keyword_argument(a, b, **kwargs):
     print(a, b, kwargs)
 
 variable_length_keyword_argument(1, 2, c=3, d=4, e=5) # arguments cannot follow var-keyword argument
+
+
+def factorial_of_a_number_using_recursion(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial_of_a_number_using_recursion(n - 1)
+
+print(factorial_of_a_number_using_recursion(5))
+
+
+# 1st class function, function as an object
+def fun():
+    print("hello")
+
+f = fun
+f()
+
+show = print
+show("hello")
+
+
+# Function as a parameter
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def arithmetic(f, x, y):
+    return f(x, y)
+
+sum = arithmetic(add, 10, 5)
+sub = arithmetic(subtract, 10, 5)
+print(sum)
+print(sub)
