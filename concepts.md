@@ -109,3 +109,75 @@ Set:
 
 Dictionary:
  - Ordered collection of heterogeneous elements, mutable
+
+### Types of Errors:
+ - Syntax Error
+ - Logical Error
+ - Runtime Error (program executes but throws Traceback call) (TypeError, KeyError, ValueError etc.)
+
+Need of error handling?<br>
+Program/application shouldn't crash else it should guide the user to input the value correctly via prompt/labels etc.
+
+```python
+def exception_handling():
+    try:
+        open resource
+        use resource
+    except Exception as e:
+        raise e
+    else:
+        return result
+    finally:
+        close resource
+```
+
+User defined exceptions must be inherited/derived from Exception class.
+
+## OOPs (Object-Oriented Programming)
+
+ - Class: A blueprint. E.g., A blueprint of a house design/layout.<br>
+ - Object: Instances of the class. Based on blueprint. E.g., A house made from of the blueprint of the class.
+ - Everything in python are objects.
+ - A class is made up of twp things:
+    - Data members / properties
+    - Member functions / methods
+ - Encapsulation: Binding together data members & member functions inside a class.
+ - Abstraction: Hiding data and functionality. 
+ - E.g., TV
+   - Everything, all functionality, circuit is enclosed in a box which is encapsulation.
+   - User can perform operations without knowing the working of operation such as volume change, channel change which is nothing but abstraction.
+   - What it is doing up with the data internally we don't know, this is data hiding.
+ - Self is the reference to the current object. When we create the object, the same object's reference is passed to self and can be checked with id. Self is not a keyword.
+ - Types of variables: Instance variables, class variable and static variables.
+ - Types of methods: Instance methods, class methods and static methods.
+ - Instance variables are created or declared inside __init__(), declared and accessed using self. Instance variables can be created outside of __init()__ but in order to use it, you must call the function before using.
+ - Instance methods first parameter must be self
+ - Class/Static variables: Information of class. mostly declared before init method. class variables are accessed using class name inside instance methods. Are present even without creation of object and act as a share data/property across all objects.
+ - Class methods are accessed using class name and is decorated by @classmethod decorator.
+ - Static methods: declared without self with decorator @staticmethod. Purpose is to get some info, without creating object. E.g, know interest without opening bank account. Static methods can't access members of a class because there is no self. 
+ - ```python
+    class Rectangle:
+        count = 0 # class variable
+        def __init(self, l, b):
+            # instance variables
+            self.length = l
+            self.breadth = b
+    
+        # instance method
+        def area(self):
+            return self.length * self.breadth
+   
+        @classmethod
+        def get_count(cls):
+            return cls.count
+        
+        @staticmethod
+        def cal_perimeter(l, b):
+            return 2 * (l + b)
+    
+    r1 = Rectangle(4, 6)
+    r2 = Rectangle(6, 8)
+    # print(r1.get_count())
+    print(Rectangle.get_count())
+    print(Rectangle.cal_perimeter(5, 8))
+    ```
