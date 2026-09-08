@@ -1729,9 +1729,9 @@ can access it.
 E.g: len() can be used to get length of a list, a set etc. so same method len() but able to handle different data types.
 
 ## Ways of achieving Polymorphism:
- - Duck Typing: Duck, Dog, Person
+ - Duck Typing: Duck (talk, walk), Dog (talk, walk), Person (pet)
  - Method overloading
    - Types of parameters: supports by nature. E.g: sum(2 + 3)., sum('his' + 'her')
    - Number of parameters: shadows previous declaration, interpreter
- - Method overriding: Redefining of parent's class metho in child class
+ - Method overriding: Redefining a method of parent's class in child class. To call the parent's class method from child class. super() must be used.
  - Operator overloading
