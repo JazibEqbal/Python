@@ -1900,19 +1900,19 @@ E.g: len() can be used to get length of a list, a set etc. so same method len() 
  - Method overloading
    - Types of parameters: supports by nature. E.g: sum(2 + 3)., sum('his' + 'her')
    - Number of parameters: shadows previous declaration, interpreter
-   - Method overriding: Redefining a method of parent's class in child class. To call the parent's class method from child class. super() must be used.
-      - ```python
-        class Parent:
-            def show(self):
-              print("Parent")
+ - Method overriding: Redefining a method of parent's class in child class. To call the parent's class method from child class. super() must be used.
+    - ```python
+      class Parent:
+          def show(self):
+            print("Parent")
         
-        class Child(Parent):
-            def show(self):
-              print("Child")
-              super().show()
+      class Child(Parent):
+          def show(self):
+            print("Child")
+            super().show()
     
-        c = Child()
-        c.show()
-        # c.super().show() # not allowed
-        ```
+      c = Child()
+      c.show()
+      # c.super().show() # not allowed
+      ```
  - Operator overloading
