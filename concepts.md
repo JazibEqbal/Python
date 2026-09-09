@@ -1630,6 +1630,150 @@ class Child(Parent):
         print("Child constructor")
 ```
 
+# Types of Inheritance in Python
+
+Inheritance allows a class (**child**) to reuse the properties and methods of another class (**parent**).
+
+## 1. Single Inheritance
+
+One child class inherits from one parent class.
+
+```python
+class A:
+    pass
+
+class B(A):
+    pass
+```
+
+**Structure:** `A → B`
+
+---
+
+## 2. Multiple Inheritance
+
+One child class inherits from **two or more parent classes**.
+
+```python
+class A:
+    def show(self):
+        print('A')
+
+class B:
+    def show(self):
+        print('B')
+
+
+class C(A, B):
+    print('C')
+
+
+c = C()
+c.show()
+```
+```text
+Output: C A
+```
+
+**Structure:** `A + B → C`
+
+Python uses **MRO (Method Resolution Order)** to determine which method is called.
+
+---
+
+## 3. Multilevel Inheritance
+
+Inheritance occurs **level by level**.
+
+```python
+class A:
+    def show(self):
+        print('A')
+
+class B(A):
+    def show(self):
+        print('B')
+        super().show()
+
+class C(B):
+    def show(self):
+        print('C')
+        super().show()
+
+obj = C()
+obj.show()
+```
+```text
+Output: C B A
+```
+
+**Structure:** `A → B → C`
+
+---
+
+## 4. Hierarchical Inheritance
+
+Multiple child classes inherit from the **same parent class**.
+
+```python
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(A):
+    pass
+```
+
+**Structure:**
+
+```text
+    A
+   / \
+  B   C
+```
+
+---
+
+## 5. Hybrid Inheritance
+
+A combination of **two or more types of inheritance**.
+
+```python
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(A):
+    pass
+
+class D(B, C):
+    pass
+```
+
+**Structure:**
+
+```text
+    A
+   / \
+  B   C
+   \ /
+    D
+```
+
+### Quick Summary
+
+| Type             | Meaning                                   |
+| ---------------- | ----------------------------------------- |
+| **Single**       | One parent → One child                    |
+| **Multiple**     | Multiple parents → One child              |
+| **Multilevel**   | Grandparent → Parent → Child              |
+| **Hierarchical** | One parent → Multiple children            |
+| **Hybrid**       | Combination of multiple inheritance types |
+
 ---
 
 # 37. Data Hiding and Access Specifiers
@@ -1729,9 +1873,46 @@ can access it.
 E.g: len() can be used to get length of a list, a set etc. so same method len() but able to handle different data types.
 
 ## Ways of achieving Polymorphism:
- - Duck Typing: Duck (talk, walk), Dog (talk, walk), Person (pet)
+- Duck Typing: Duck typing focuses on whether an object supports the required methods, rather than its actual type.
+  - ```python
+    class Duck:
+       def talk(self):
+            print("Duck talking")
+    
+       def walk(self):
+         print("Duck walking")
+    
+    class Dog:
+        def talk(self):
+           print("Dog talking")
+        
+        def walk(self):
+           print("Dog walking")
+    
+    def person(pet):
+        pet.talk()
+        pet.walk()
+    
+    # d = Duck()
+    d = Dog()
+    person(d)
+    ```
  - Method overloading
    - Types of parameters: supports by nature. E.g: sum(2 + 3)., sum('his' + 'her')
    - Number of parameters: shadows previous declaration, interpreter
- - Method overriding: Redefining a method of parent's class in child class. To call the parent's class method from child class. super() must be used.
+   - Method overriding: Redefining a method of parent's class in child class. To call the parent's class method from child class. super() must be used.
+      - ```python
+        class Parent:
+            def show(self):
+              print("Parent")
+        
+        class Child(Parent):
+            def show(self):
+              print("Child")
+              super().show()
+    
+        c = Child()
+        c.show()
+        # c.super().show() # not allowed
+        ```
  - Operator overloading
