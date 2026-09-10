@@ -1612,7 +1612,7 @@ Here:
 
 ---
 
-# 36. `super()`
+## `super()`
 
 `super()` is commonly used to access methods and constructors of a parent class.
 
@@ -1630,9 +1630,14 @@ class Child(Parent):
         print("Child constructor")
 ```
 
-# Types of Inheritance in Python
+## Types of Inheritance in Python
 
 Inheritance allows a class (**child**) to reuse the properties and methods of another class (**parent**).
+Python uses **MRO (Method Resolution Order)** to determine which method is called.
+
+```text
+MRO: Child's class --> Parent's class --> Object class (Python global class)
+```
 
 ## 1. Single Inheritance
 
@@ -1676,8 +1681,6 @@ Output: C A
 ```
 
 **Structure:** `A + B → C`
-
-Python uses **MRO (Method Resolution Order)** to determine which method is called.
 
 ---
 
@@ -1762,6 +1765,8 @@ class D(B, C):
   B   C
    \ /
     D
+    
+  MRO: D --> B --> C --> A 
 ```
 
 ### Quick Summary
@@ -1774,9 +1779,18 @@ class D(B, C):
 | **Hierarchical** | One parent → Multiple children            |
 | **Hybrid**       | Combination of multiple inheritance types |
 
+## Purpose of Inheritance
+ - **Specialization**: Borrowing features from base class and adding new features to it. Offers **reusability**.
+    ```text 
+    Eg: CRT + (new features) --> LCD 
+   ```
+ - **Generalization**: Overriding is useful for achieving generalization and hence we achieve polymorphism. In base class, only the methods are defined with empty body and child class must override those methods.
+    ```text 
+   Eg: Circle, Rectangle, Triangle can be generalized as Shapes.
+   ```
 ---
 
-# 37. Data Hiding and Access Specifiers
+# 36. Data Hiding and Access Specifiers
 
 Python does not have strict access specifiers in the same way as languages such as Java or C++.
 
@@ -1866,7 +1880,7 @@ can access it.
 > This is **not true private access control**. Name mangling primarily prevents accidental name collisions and discourages direct access.
 
 ---
-# Polymorphism
+# 37. Polymorphism
 
 **Polymorphism** means one name, many forms. One name but different actions.
 
@@ -1916,3 +1930,51 @@ E.g: len() can be used to get length of a list, a set etc. so same method len() 
       # c.super().show() # not allowed
       ```
  - Operator overloading
+   - ```python
+     class Vector:
+        def __init__(self, x, y):
+            self.x = x
+            self.y = y
+        
+        # overloading + operator
+        def __add__(self, other):
+            x = self.x + other.x
+            y = self.y + other.y
+            return Vector(x, y)
+        
+        # overloading print function
+        def __str__(self):
+            return '(' + str(self.x) + ',' + str(self.y) + ')'
+
+     v1 = Vector(3, 5)
+     v2 = Vector(7, 6)
+     v3 = v1 + v2
+     print('Vector Sum:', v3)
+     ```
+
+# 38. Types of Classes
+
+### Concrete class
+
+A class of which all methods are concrete i.e., all methods are defined with their implementation is known as concrete class. It is used for achieving specialization (reusability).
+
+### Interface
+
+A class of which all methods are dummy. It is used for generalization (polymorphism), the class inheriting, must override those methods, must import `ABC` package and parent class must inherit from ABC.
+```python
+from abc import ABC, abstractmethod
+
+class parent(ABC):
+    
+    @abstractmethod
+    def dummy(self):
+        pass
+
+class child(Parent):
+    
+    def dummy(self):
+        print('Child')
+```
+
+### Abstract class
+Combination of concrete class and interface. It is used to achieve reusability and overriding.
