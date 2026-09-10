@@ -1978,3 +1978,45 @@ class child(Parent):
 
 ### Abstract class
 Combination of concrete class and interface. It is used to achieve reusability and overriding.
+
+# 39. Data Structures
+
+### Counter
+```python
+from collections import Counter
+
+s = 'swiss'
+c = Counter(s)
+
+print(c) # returns Counter({'s': 3, 'w': 1, 'i': 1})
+
+print(c.most_common(1)) # returns [('s', 3)]
+
+for i in c.most_common(1):
+    print(i[0]) # returns s, 1 resembles how many most common elements to be returned.
+    
+for i in c.elements():
+    print(i)
+```
+
+### Deque
+
+Double ended queue. Elements can be inserted/updated/deleted from both the side. By default, right side.
+```python
+from collections import deque
+
+l = [1, 2, 3, 4, 5, 2]
+
+d = deque(l)
+
+d.appendleft(6)
+print(d) # deque([6, 1, 2, 3, 4, 5, 2])
+
+d.rotate(1)
+print(d) # deque([2, 6, 1, 2, 3, 4, 5])
+
+print(d.count(2)) # returns 2
+
+d.reverse()
+print(list(d))
+```
