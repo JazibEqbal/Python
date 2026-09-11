@@ -216,7 +216,7 @@ def find_second_largest_distinct(numbers):
     return second_largest
 
 
-print(find_second_largest_distinct([10, 5, 20, 8, 20, 15]))
+# print(find_second_largest_distinct([10, 5, 20, 8, 20, 15]))
 
 
 def find_second_largest_unique_occurrence(numbers):
@@ -231,22 +231,85 @@ def find_second_largest_unique_occurrence(numbers):
                 occurrence_count += 1
 
         if occurrence_count == 1:
-            if numbers[i] > largest:
+            if numbers[i] > largest: # I found a number bigger than my current largest. Therefore, my old largest becomes my second largest.
                 second_largest = largest
                 largest = numbers[i]
-            elif numbers[i] > second_largest:
+            elif numbers[i] > second_largest: # The current number is NOT bigger than largest, but it is bigger than second_largest, so make it the new second largest.
                 second_largest = numbers[i]
 
     return second_largest
 
+# print(find_second_largest_unique_occurrence([10, 5, 20, 8, 20, 15]))
 
-print(find_second_largest_unique_occurrence([10, 5, 20, 8, 20, 15]))
+
+def frequency_counter_method_1(l):
+    d = {}
+
+    for i in range(len(l)):
+        c = 0
+        for j in range(len(l)):
+            if l[i] == l[j]:
+                c += 1
+
+        d[l[i]] = c
+
+    return d
+
+# print(frequency_counter_method_1([2, 3, 2, 5, 3, 2, 7]))
+
+
+def frequency_counter_method_2(l):
+    d = {}
+
+    for i in l:
+        if i in d:
+            d[i] += 1
+        else:
+            d[i] = 1
+
+    return d
+
+# print(frequency_counter_method_2([2, 3, 2, 5, 3, 2, 7]))
+
+
+def frequency_counter_method_3(l):
+    from collections import Counter
+
+    c = Counter(l)
+    return c
+
+# print(frequency_counter_method_3([2, 3, 2, 5, 3, 2, 7]))
+
+
+def word_frequency(s):
+    s = s.split(' ')
+    d = {}
+    for word in s:
+        if word.lower() in d:
+            d[word.lower()] += 1
+        else:
+            d[word.lower()] = 1
+
+    return d
+
+# print(word_frequency("python is easy and python is powerful"))
+
+
+def find_all_duplicates(l):
+    duplicates = []
+    for i in range(len(l)):
+        c = 0
+        for j in range(len(l)):
+            if l[i] == l[j]:
+                c += 1
+        if c > 1 and l[i] not in duplicates:
+            duplicates.append(l[i])
+    return duplicates
+
+print(find_all_duplicates([1, 3, 4, 2, 3, 5, 1, 6, 4]))
+
 
 """
-Frequency Counter l = [2, 3, 2, 5, 3, 2, 7] Expected: {2: 3, 3: 2, 5: 1, 7: 1} Try using a dictionary.
-
-Word Frequency sentence = "python is easy and python is powerful"
-
 Two Sum :Find the two numbers whose sum equals the target.
 
 Given: l = [2, 7, 11, 15], target = 9
@@ -261,10 +324,4 @@ Move Zeros to the end while maintaining the order of other numbers.
 l = [0, 1, 0, 3, 12]
 
 Expected: [1, 3, 12, 0, 0]
-
-Find all duplicate numbers.
-
-l = [1, 3, 4, 2, 3, 5, 1, 6, 4]
-
-Expected: [1, 3, 4]
 """
