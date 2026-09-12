@@ -306,19 +306,48 @@ def find_all_duplicates(l):
             duplicates.append(l[i])
     return duplicates
 
-print(find_all_duplicates([1, 3, 4, 2, 3, 5, 1, 6, 4]))
+# print(find_all_duplicates([1, 3, 4, 2, 3, 5, 1, 6, 4]))
+
+
+def first_non_repetitive(s):
+  for i in range(len(s)):
+    count = 0
+
+    for j in range(len(s)):
+        if s[i] == s[j]:
+            count += 1
+
+    if count == 1:
+        return s[i]
+
+
+# print(first_non_repetitive("aabbcddee"))
+
+
+def first_non_repetitive_2(s):
+    from collections import Counter
+
+    count = Counter(s)
+
+    for ch in s:
+        if count[ch] == 1:
+            return ch
+
+# print(first_non_repetitive_2("aabbcddee"))
+
+
+def two_sum(l, target):
+    res = []
+    for i in range(len(l)):
+        for j in range(i + 1, len(l)):
+            if l[i] + l[j] == target:
+                res.append([l[i], l[j]])
+    return res
+
+print(two_sum([4, 2, 7, 5, 11, 15], 9))
 
 
 """
-Two Sum :Find the two numbers whose sum equals the target.
-
-Given: l = [2, 7, 11, 15], target = 9
-
-Expected: 2, 7
-
-Then try solving it efficiently using a dictionary.
-
-
 Move Zeros to the end while maintaining the order of other numbers.
 
 l = [0, 1, 0, 3, 12]
